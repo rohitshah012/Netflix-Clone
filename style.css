@@ -1,3 +1,5 @@
+/* 
+
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -126,9 +128,9 @@ nav button {
 }
 
 
-.email {
+.email { */
 
-    /* opacity: 90%; */
+    /* opacity: 90%;
     color: rgb(255, 255, 255);
     background-color: rgba(23, 23, 23, 0.7);
 }
@@ -142,7 +144,7 @@ nav button {
 
 .first {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     color: white;
     max-width: 70vw;
     margin: auto;
@@ -209,10 +211,10 @@ section>div :nth-child(2) {
 }
 
 
-    footer .questions {
-        font-size: 34px;
-        padding: 34px 0;
-    }
+footer .questions {
+    font-size: 34px;
+    padding: 34px 0;
+}
 
 
 footer {
@@ -222,18 +224,35 @@ footer {
     padding: 60px;
     margin: auto;
 }
+
 .footer {
     display: grid;
     /* ye grid samjh nahi aaya */
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    color: white;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* color: white;
 }
-.footer a{
+
+
+.footer-grid a {
     font-size: 24px;
-  
-}
- .footer-item {
+
+    text-decoration: none;
+    color: #ccc;
+    /* optional - Netflix style */
+/* }
+
+
+.footer-item {
     display: flex;
     flex-direction: column;
     gap: 23px;
-} 
+}  */ */
+
+
+
+
+/* upper css is done my me that have some issue  */
+
+
+
+
