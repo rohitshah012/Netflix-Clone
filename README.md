@@ -4,7 +4,7 @@ A modern and responsive **Netflix landing page clone** built using HTML and CSS.
 This project replicates the UI of Netflix with a clean layout, responsive design, and smooth user experience.
 
 🔗 **Live Demo:**
-https://rohitshanh012.github.io/Netflix-Clone/
+https://rohitshah012.github.io/Netflix-Clone/
 
 ---
 
