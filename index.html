@@ -37,6 +37,8 @@
             padding: 20px 50px;
             max-width: 1200px;
             margin: auto;
+            position: relative;
+            z-index: 10;
         }
 
         .nav img {
@@ -46,6 +48,42 @@
         .nav-btns {
             display: flex;
             gap: 15px;
+            align-items: center;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.45);
+            cursor: pointer;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .nav-toggle-bar {
+            width: 18px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 999px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
 
         .btn {
@@ -240,6 +278,51 @@
                 width: 100%;
             }
         }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav img {
+                width: 110px;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+            }
+
+            .nav-btns {
+                position: absolute;
+                top: calc(100% + 10px);
+                right: 20px;
+                min-width: 170px;
+                padding: 14px;
+                border-radius: 10px;
+                background: rgba(20, 20, 20, 0.96);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                pointer-events: none;
+                transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+            }
+
+            .nav-btns.open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .nav-btns .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -248,7 +331,13 @@
         <nav class="nav">
             <span><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
                     alt="Netflixlogo"></span>
-            <div class="nav-btns">
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="mobile-nav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-btns" id="mobile-nav">
                 <button class="btn">English</button>
                 <button class="btn btn-red">Sign In</button>
             </div>
@@ -347,6 +436,33 @@
             </div>
         </div>
     </footer>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-btns');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', String(!isOpen));
+                navMenu.classList.toggle('open', !isOpen);
+            });
+
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth > 640) return;
+                if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navMenu.classList.remove('open');
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 640) {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navMenu.classList.remove('open');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
